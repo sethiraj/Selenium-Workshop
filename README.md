@@ -6,7 +6,7 @@
 
 ### Install Selenium IDE Workshop Dependencies
 
-* Follow instruction [here](https://github.com/sethiraj/Selenium-Workshop/blob/master/Selenium_IDE_Windows.docx) for Windows.
+* Follow instruction [here](https://github.com/sethiraj/Selenium-Workshop/blob/master/Selenium_IDE_Installation_Windows.md) for Windows.
 
 ### Run the sample IDE test
 
