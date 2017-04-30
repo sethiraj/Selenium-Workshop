@@ -1,0 +1,12 @@
+package mavenproject;
+
+import org.testng.annotations.BeforeTest;
+
+public class MavenSeleniumTest {
+
+	@BeforeTest
+	public void setUp()
+	{
+		
+	}
+}

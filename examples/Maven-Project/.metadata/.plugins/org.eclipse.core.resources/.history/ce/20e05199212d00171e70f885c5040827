@@ -1,0 +1,10 @@
+package mavenproject;
+
+public class MavenSeleniumTest {
+
+	@BeforeTest
+	public void setUp()
+	{
+		
+	}
+}

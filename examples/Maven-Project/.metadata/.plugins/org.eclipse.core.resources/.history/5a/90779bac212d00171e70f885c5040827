@@ -1,0 +1,14 @@
+package mavenproject;
+
+import org.testng.annotations.BeforeTest;
+
+public class MavenSeleniumTest {
+	
+	WebDriver driver;
+
+	@BeforeTest
+	public void setUp()
+	{
+		
+	}
+}
