@@ -1,0 +1,97 @@
+package com.example.tests;
+
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class SampleSeleniumTest {
+  private WebDriver driver;
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+
+ @BeforeTest
+  public void setUp() throws Exception {
+	System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+	driver = new ChromeDriver();
+    baseUrl = "http://www.seleniumeasy.com/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.manage().window().maximize();
+    }
+
+  @Test
+  public void testSampleTestSeleniumIDE() throws Exception {
+    driver.get(baseUrl + "/test/");
+    WebElement sampleElement = driver.findElement(By.id("site-name"));
+    sampleElement.click();
+    driver.findElement(By.linkText("Demo Home")).click();
+    driver.findElement(By.linkText("Input Forms")).click();
+    driver.findElement(By.linkText("Simple Form Demo")).click();
+    
+    int inputs = driver.findElements(By.tagName("input")).size();
+    System.out.println("Number of inputs present are " + inputs);
+    
+    driver.findElement(By.xpath("//form[@id='gettotal']/div/input")).sendKeys("30");
+    driver.findElement(By.xpath("//form[@id='gettotal']/div[2]/input")).sendKeys("50");
+    
+    driver.findElement(By.xpath("//button[contains(text(),'Get Total')]")).click();
+    
+    System.out.println("Current Url :"+ driver.getCurrentUrl());
+    System.out.println("Title: "+driver.getTitle());
+    
+    System.out.println("Attribute Type:" + driver.findElement(By.xpath("//button[contains(text(),'Get Total')]")).getAttribute("type"));
+       
+    assertEquals("Selenium Easy Demo - Simple Form to Automate using Selenium", driver.getTitle());
+  }
+
+  @AfterTest
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+}

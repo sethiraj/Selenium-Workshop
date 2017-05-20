@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNG Test Group"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="24.185">
+  <properties />
+  
+  
+            <testcase name="testSampleTestSeleniumIDE" time="24.185" classname="com.example.tests.SampleSeleniumTest" />
+      
+</testsuite>
